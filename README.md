@@ -2,8 +2,6 @@
 
 This project demonstrates a real-time stock price analysis pipeline using **Apache Flink**, **AWS Kinesis**, **S3**, and **Lambda functions**. The pipeline computes technical indicators and detects anomalies in stock prices.
 
----
-
 ## Project Overview
 
 - **Objective:** Compute CMGR (Compound Monthly Growth Rate), 10-day EMA (Exponential Moving Average), and detect anomalous price drops (≥8%) in real-time stock data.
@@ -14,7 +12,6 @@ This project demonstrates a real-time stock price analysis pipeline using **Apac
   3. Results are stored in **S3** (`part_a`, `part_b`, `part_c`) and can be accessed via `output_lambda`.
   4. `input_lambda` can simulate real-time stock price updates for testing the pipeline.
 
----
 
 ## System Architecture
 
@@ -43,7 +40,6 @@ Flink Managed Job
               output lambda
 ```
 
----
 
 ## Folder Structure
 
@@ -62,27 +58,24 @@ project/
 │ └─ AMDprices2021-2022_sample.csv # Sample data
 ```
 
----
 
 ## Key Contributions
 
 - Implemented **CMGR UDF** in PyFlink to compute compound monthly growth rates.
 - Developed **10-day EMA** calculation in Flink SQL with sliding window.
 - Designed **anomaly detection** using `MATCH_RECOGNIZE` for sudden price drops.
-- Integrated all analyses into a single **Flink pipeline** (`exercise_d.ipynb`) writing results to S3.
+- Integrated all analyses into a single **Flink pipeline** (`Exercise_D.ipynb`) writing results to S3.
 - Configured **Lambda functions** to simulate real-time stock data and retrieve analysis results.
 
----
 
 ## How to Run
 
 1. Upload sample CSV to S3.
 2. Deploy Lambda functions (`parse_csv_lambda`, `input_lambda`, `output_lambda`) with appropriate IAM permissions.
-3. Submit the Flink pipeline (`exercise_d.ipynb`) to **AWS Kinesis Managed Flink**.
+3. Submit the Flink pipeline (`Exercise_D.ipynb`) to **AWS Kinesis Managed Flink**.
 4. Use `input_lambda` to push real-time data for testing.
 5. Access results via `output_lambda` or S3 JSON files.
 
----
 
 ## Notes
 
